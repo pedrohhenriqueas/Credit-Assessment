@@ -38,7 +38,6 @@ public class CreateCreditDTO {
 	}
 	public CreateCreditDTO(BigDecimal creditValue, LocalDate dayFirstOfInstallment, int numberOfInstallments,
 			Long customerId) {
-		super();
 		this.creditValue = creditValue;
 		this.dayFirstOfInstallment = dayFirstOfInstallment;
 		this.numberOfInstallments = numberOfInstallments;

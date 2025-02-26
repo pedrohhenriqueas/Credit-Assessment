@@ -29,6 +29,7 @@ public class CreditService {
 	    credit.setNumberOfInstallments(createCreditDTO.getNumberOfInstallments());
 	    credit.setCustomer(customer);
 	    creditRepository.save(credit);
+	    customerService.addCredit(customer.getId(), credit);
 	    
 	    return ResponseEntity.ok(credit);
 	}
@@ -37,9 +38,14 @@ public class CreditService {
 		return creditRepository.findAll();
 	}
 	
-	public ResponseEntity<Credit> find(Long customerId, UUID creditCode){
+	
+	public ResponseEntity<Credit> findByCreditCode(Long customerId, UUID creditCode){
 		Credit credit = creditRepository.findByCustomerIdAndCreditCode(customerId, creditCode);
 		return ResponseEntity.ok(credit);
+	}
+	
+	public List<Credit> findByCustomerId(Long customerId){
+		return creditRepository.findByCustomerId(customerId);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.example.credit_assessment_system.repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +13,5 @@ public interface CreditRepository extends JpaRepository<Credit, Long>{
 
     Credit findByCustomerIdAndCreditCode(Long customerId, UUID creditCode);
 
+    List<Credit> findByCustomerId(Long customerId);
 }

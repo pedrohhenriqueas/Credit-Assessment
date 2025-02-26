@@ -24,11 +24,9 @@ public class Customer {
 	private String cpf;
 	private String email;
 	private String password;
-	
 	@Embedded
 	private Address address;
 	private BigDecimal income;
-	
 	@OneToMany
 	private List<Credit> credits;
 	

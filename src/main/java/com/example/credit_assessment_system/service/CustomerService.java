@@ -1,6 +1,5 @@
 package com.example.credit_assessment_system.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.credit_assessment_system.entities.Address;
+import com.example.credit_assessment_system.entities.Credit;
 import com.example.credit_assessment_system.entities.Customer;
 import com.example.credit_assessment_system.exceptions.NotFoundEntityException;
 import com.example.credit_assessment_system.models.CreateCustomerDTO;
@@ -56,6 +56,11 @@ public class CustomerService {
 		customerRepository.save(customer);
 		
 		return ResponseEntity.ok(customer);
+	}
+	
+	public void addCredit(Long customerId, Credit credit) {
+		Customer customer = findById(customerId);
+		customer.getCredits().add(credit);
 	}
 	
 	public void delete(Long id) {
